@@ -5,31 +5,24 @@
 {% block body %}
 <div class="container mt-5">
     <h1>User Landing Page</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Description</th>
-                {# <th>Action</th> #}
-            </tr>
-        </thead>
-        <tbody>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
             {% for product in products %}
-            <tr>
-                <td>{{ product.name }}</td>
-                <td>{{ product.price }}</td>
-                <td>{{ product.description }}</td>
+        <div>
 
-            </tr>
+            <div class="card my-3" style="width: 18rem;">
+                <img src="{{ asset('images/' ~ product.imageFile) }}" class="card-img-top" alt="image product">
+                <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">{{product.description}}</p>
+                <p class="card-text">{{product.price}}</p>
+                {# <a href="#" class="btn btn-primary">Go somewhere</a> #}
+                </div>
+            </div>
+        </div>
+
             {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
+                <p>no records found</p>
             {% endfor %}
-        </tbody>
-    </table>
-
+    </div>
 </div>
 {% endblock %}
