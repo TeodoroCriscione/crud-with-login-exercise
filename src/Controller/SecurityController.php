@@ -27,6 +27,9 @@ class SecurityController extends AbstractController
     #[Route(path: '/logout', name: 'app_logout')]
     public function logout(): void
     {
+        // clean the browser cache after logging out, otherwise it log in again
+        // to be made on Tuesday
+        
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 }
