@@ -1,27 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LoginAccessController!{% endblock %}
+{% block title %}Hello LandingPageController!{% endblock %}
 
 {% block body %}
 <div class="container mt-5">
     <h1>Landing Page</h1>
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
             {% for product in products %}
-        <div>
+        <div class="col my-5">
 
-            <div class="card my-3" style="width: 18rem;">
-                <img src="{{ asset('images/' ~ product.imageFile) }}" class="card-img-top" alt="image product">
-                <div class="card-body">
-                <h5 class="card-title">{{product.name}}</h5>
+            <div class="card h-100 shadow rounded-4 overflow-hidden" style="width: 18rem;">
+                <img src="{{ asset('images/' ~ product.imageFile) }}" class="card-img-top p-3" alt="Image of {{ product.name}}">
+                <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title fw-bold">{{product.name}}</h5>
                 <p class="card-text">{{product.description}}</p>
-                <p class="card-text">{{product.price}}</p>
-                {# <a href="#" class="btn btn-primary">Go somewhere</a> #}
+                <p class="card-text fw-bold">{{product.price}}€</p>
+                {# <p class="card-text">{{status}}</p> #}
+                {% if is_granted('ROLE_USER') %}
+                    <a href="#" class="btn btn-secondary">Add To Cart</a>
+                {% endif %}
                 </div>
             </div>
         </div>
 
             {% else %}
-                <p>no records found</p>
+                <p>No records found.</p>
             {% endfor %}
     </div>
 </div>

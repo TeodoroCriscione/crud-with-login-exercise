@@ -10,9 +10,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[Route('/admin/supplier')]
 final class SupplierController extends AbstractController
 {
-    #[Route('/supplier', name: 'app_supplier')]
+    #[Route('/', name: 'app_supplier')]
     public function index(): Response
     {
         return $this->render('supplier/index.html.twig', [
@@ -20,7 +21,7 @@ final class SupplierController extends AbstractController
         ]);
     }
 
-    #[Route('/supplier_new', name: 'app_supplier_new')]
+    #[Route('/new', name: 'app_supplier_new')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $supplier = new Supplier();

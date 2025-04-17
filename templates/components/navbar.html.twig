@@ -32,9 +32,11 @@
 
           {% if is_granted('ROLE_ADMIN') %}
             <a class="nav-link border border-success mx-5" href="{{path('app_product_index')}}">Admin Dashboard</a>
+            <a class="nav-link border border-success mx-5" href="{{path('app_landing_page')}}">User Landing Page</a>
             {% else %}
               {% if is_granted(('IS_AUTHENTICATED_FULLY')) %}
                 <a class="nav-link border border-success mx-5" href="{{path('app_landing_page')}}">User Landing Page</a>
+                <a class="nav-link border border-success mx-5" href="#">User Cart</a>
               {% endif %}
           {% endif %}
           
